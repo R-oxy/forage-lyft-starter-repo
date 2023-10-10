@@ -1,7 +1,7 @@
 from datetime import datetime  # Importing datetime for date calculations
 
 # Import the Battery abstract class
-from battery import Battery
+from batteries.battery import Battery
 
 # Define the NubbinBattery class, inheriting from the Battery abstract class
 class NubbinBattery(Battery):
@@ -13,7 +13,7 @@ class NubbinBattery(Battery):
     def needs_service(self):
         # Check if the battery needs service based on the date
         service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 4)
-        if service_threshold_date < datetime.today().date():
+        if service_threshold_date.date() < datetime.today().date():
             return True
         else:
             return False
