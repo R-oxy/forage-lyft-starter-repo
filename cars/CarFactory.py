@@ -1,34 +1,54 @@
-from cars.Car import Car  # Import the Car class
-from engine.capulet_engine import CapuletEngine  # Import the CapuletEngine class
-from engine.willoughby_engine import WilloughbyEngine  # Import the WilloughbyEngine class
-from engine.sternman_engine import SternmanEngine  # Import the SternmanEngine class
-from batteries.SpindlerBattery import SpindlerBattery  # Import the SpindlerBattery class
-from batteries.NubbinBattery import NubbinBattery  # Import the NubbinBattery class
+# Importing the necessary classes for engines and batteries
+from batteries.NubbinBattery import NubbinBattery
+from batteries.SpindlerBattery import SpindlerBattery
+from cars import Car
+from engine.capulet_engine import CapuletEngine
+from engine.sternman_engine import SternmanEngine
+from engine.willoughby_engine import WilloughbyEngine
 
-# CarFactory for creating Car objects
+# CarFactory class for creating different car models
 class CarFactory:
     @staticmethod
-    def create_car(model, last_service_date, current_mileage, last_service_mileage, warning_light_is_on):
-        # Create a Calliope car with CapuletEngine and SpindlerBattery
-        if model == "Calliope":
-            return Car(CapuletEngine(current_mileage, last_service_mileage), SpindlerBattery(last_service_date))
-        
-        # Create a Glissade car with WilloughbyEngine and SpindlerBattery
-        elif model == "Glissade":
-            return Car(WilloughbyEngine(current_mileage, last_service_mileage), SpindlerBattery(last_service_date))
-        
-        # Create a Palindrome car with SternmanEngine and NubbinBattery
-        elif model == "Palindrome":
-            return Car(SternmanEngine(warning_light_is_on), NubbinBattery(last_service_date))
-        
-        # Create a Rorschach car with WilloughbyEngine and NubbinBattery
-        elif model == "Rorschach":
-            return Car(WilloughbyEngine(current_mileage, last_service_mileage), NubbinBattery(last_service_date))
-        
-        # Create a Thovex car with CapuletEngine and NubbinBattery
-        elif model == "Thovex":
-            return Car(CapuletEngine(current_mileage, last_service_mileage), NubbinBattery(last_service_date))
-        
-        # Return None if the model is not recognized
-        else:
-            return None
+    def create_calliope(last_service_date, current_mileage, last_service_mileage):
+        # Create engine and battery for Calliope model
+        engine = CapuletEngine(current_mileage, last_service_mileage)
+        battery = SpindlerBattery(last_service_date)
+        # Create and return Car object
+        car = Car(engine, battery)
+        return car
+
+    @staticmethod
+    def create_glissade(last_service_date, current_mileage, last_service_mileage):
+        # Create engine and battery for Glissade model
+        engine = WilloughbyEngine(current_mileage, last_service_mileage)
+        battery = SpindlerBattery(last_service_date)
+        # Create and return Car object
+        car = Car(engine, battery)
+        return car
+
+    @staticmethod
+    def create_palindrome(last_service_date, warning_light_is_on):
+        # Create engine and battery for Palindrome model
+        engine = SternmanEngine(warning_light_is_on)
+        battery = SpindlerBattery(last_service_date)
+        # Create and return Car object
+        car = Car(engine, battery)
+        return car
+
+    @staticmethod
+    def create_rorschach(last_service_date, current_mileage, last_service_mileage):
+        # Create engine and battery for Rorschach model
+        engine = WilloughbyEngine(current_mileage, last_service_mileage)
+        battery = NubbinBattery(last_service_date)
+        # Create and return Car object
+        car = Car(engine, battery)
+        return car
+
+    @staticmethod
+    def create_thovex(last_service_date, current_mileage, last_service_mileage):
+        # Create engine and battery for Thovex model
+        engine = CapuletEngine(current_mileage, last_service_mileage)
+        battery = NubbinBattery(last_service_date)
+        # Create and return Car object
+        car = Car(engine, battery)
+        return car
