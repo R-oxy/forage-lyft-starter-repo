@@ -12,7 +12,7 @@ class SpindlerBattery(Battery):
     # Implement the needs_service method from the Battery abstract class
     def needs_service(self):
         # Check if the battery needs service based on the date
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 2)
+        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 3)
         if service_threshold_date.date() < datetime.today().date():
             return True
         else:

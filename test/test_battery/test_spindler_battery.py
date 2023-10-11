@@ -6,7 +6,7 @@ class TestSpindlerBattery(unittest.TestCase):
     
     # Test SpindlerBattery
     def test_spindler_needs_service_true(self):
-        last_service_date = datetime.now() - timedelta(days=800)  # 2 years ago
+        last_service_date = datetime.now() - timedelta(days=1100)  # 3 years ago
         battery = SpindlerBattery(last_service_date)
         self.assertTrue(battery.needs_service())
         
